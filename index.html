@@ -632,11 +632,11 @@
     }
 
    .chat-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;        /* WAJIB */
-    overflow: hidden;    /* WAJIB */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .messages {
@@ -647,12 +647,16 @@
 }
 
     .input-area {
-        position: fixed;
-        bottom: 0;
-        z-index: 1000;
-        background: #ffffff;
-        padding-bottom: env(safe-area-inset-bottom);
-    }
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  background: #ffffff;
+  z-index: 10;
+}
+
 
 }
 
