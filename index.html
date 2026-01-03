@@ -15,22 +15,41 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
         }
 
         .container {
-            width: 100%;
-            max-width: 1200px;
-            height: 90vh;
+            width: 100vw;
+            max-width: 100vw;
+            height: 100vh;
+            max-height: 100vh;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+                overflow: auto;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 1000px;
+                height: 90vh;
+                max-height: 90vh;
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            }
         }
 
         .login-screen {
@@ -39,6 +58,7 @@
             align-items: center;
             height: 100%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
         }
 
         .login-box {
@@ -91,78 +111,183 @@
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 20px;
+            padding: 12px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            flex-shrink: 0;
+            min-height: 70px;
+        }
+
+        @media (max-width: 767px) {
+            .header {
+                min-height: 65px;
+                padding: 10px 10px;
+                gap: 6px;
+            }
         }
 
         .header-left {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
+        }
+
+        @media (max-width: 767px) {
+            .header-left {
+                gap: 8px;
+            }
         }
 
         .logo {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 24px;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 767px) {
+            .logo {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
         }
 
         .header-info h3 {
-            font-size: 18px;
+            font-size: 16px;
+            margin-bottom: 2px;
         }
 
         .header-info p {
-            font-size: 13px;
+            font-size: 12px;
             opacity: 0.9;
+        }
+
+        @media (max-width: 767px) {
+            .header-info h3 {
+                font-size: 15px;
+            }
+
+            .header-info p {
+                font-size: 11px;
+            }
         }
 
         .header-right {
             display: flex;
-            gap: 10px;
+            gap: 6px;
             align-items: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 767px) {
+            .header-right {
+                gap: 5px;
+            }
+        }
+
+        .online-users {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+        }
+
+        @media (max-width: 767px) {
+            .online-users {
+                padding: 4px 8px;
+                font-size: 10px;
+            }
         }
 
         .user-badge {
             background: rgba(255,255,255,0.2);
-            padding: 8px 15px;
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 12px;
+        }
+
+        @media (max-width: 767px) {
+            .user-badge {
+                padding: 5px 10px;
+                font-size: 11px;
+            }
         }
 
         .settings-btn {
             background: rgba(255,255,255,0.2);
             border: none;
             color: white;
-            padding: 10px 20px;
+            padding: 8px 14px;
             border-radius: 10px;
             cursor: pointer;
+            font-size: 18px;
+        }
+
+        @media (max-width: 767px) {
+            .settings-btn {
+                padding: 6px 12px;
+                font-size: 16px;
+            }
         }
 
         .chat-container {
             flex: 1;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            overflow: hidden; /* tetap */
+            background: #f5f5f5;
+            min-height: 0;
+            position: relative;
         }
 
         .messages {
             flex: 1;
             overflow-y: auto;
-            padding: 20px;
+            overflow-x: hidden;
+            padding: 10px;
+            padding-bottom: 15px;
             background: #f5f5f5;
         }
 
+        @media (max-width: 767px) {
+            .messages {
+                padding: 8px;
+                padding-bottom: 12px;
+            }
+        }
+
         .message {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @media (max-width: 767px) {
+            .message {
+                margin-bottom: 8px;
+                gap: 6px;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .message.sent {
@@ -170,8 +295,8 @@
         }
 
         .message-avatar {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -179,17 +304,37 @@
             justify-content: center;
             align-items: center;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 767px) {
+            .message-avatar {
+                width: 34px;
+                height: 34px;
+                font-size: 12px;
+            }
         }
 
         .message-content {
-            max-width: 60%;
+            max-width: 75%;
+        }
+
+        @media (max-width: 767px) {
+            .message-content {
+                max-width: 80%;
+            }
         }
 
         .message-sender {
-            font-size: 12px;
+            font-size: 11px;
             color: #666;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .message.sent .message-sender {
+            text-align: right;
         }
 
         .message.sent .message-content {
@@ -203,49 +348,153 @@
         }
 
         .message-bubble {
-            padding: 12px 16px;
-            border-radius: 15px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            word-wrap: break-word;
+            font-size: 14px;
+        }
+
+        @media (max-width: 767px) {
+            .message-bubble {
+                padding: 8px 11px;
+                border-radius: 10px;
+                font-size: 14px;
+            }
+        }
+
+        .message.sent .message-bubble {
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.received .message-bubble {
+            border-bottom-left-radius: 4px;
         }
 
         .message-time {
-            font-size: 11px;
+            font-size: 10px;
             opacity: 0.7;
-            margin-top: 5px;
+            margin-top: 4px;
+        }
+
+        .message.sent .message-time {
+            text-align: right;
+        }
+
+        .message.received .message-time {
+            text-align: left;
         }
 
         .message-media {
             max-width: 100%;
             border-radius: 10px;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 767px) {
+            .message-media {
+                max-width: 100%;
+                border-radius: 8px;
+            }
+        }
+
+        .typing-indicator {
+            padding: 6px 15px;
+            color: #666;
+            font-size: 12px;
+            font-style: italic;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
         }
 
         .input-area {
-            padding: 15px 20px;
-            background: white;
-            border-top: 1px solid #e0e0e0;
+            padding: 10px 12px;
+            background: #ffffff;
+            border-top: 2px solid #667eea;
+            display: flex !important;
+            gap: 6px;
+            align-items: center;
+            min-height: 65px;
+            max-height: 65px;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1000;
+        }
+
+        @media (max-width: 767px) {
+            .input-area {
+                padding: 8px 10px;
+                gap: 5px;
+                min-height: 60px;
+                max-height: 60px;
+                padding-bottom: max(8px, env(safe-area-inset-bottom, 8px));
+            }
+        }
+
+        .attachment-btn {
             display: flex;
-            gap: 10px;
+            gap: 5px;
+            flex-shrink: 0;
+        }
+
+        .input-area input[type="file"] {
+            display: none;
         }
 
         .input-area input[type="text"] {
             flex: 1;
-            padding: 12px 15px;
+            padding: 9px 13px;
             border: 2px solid #e0e0e0;
-            border-radius: 25px;
-            font-size: 15px;
+            border-radius: 18px;
+            font-size: 14px;
+            min-width: 100px;
+        }
+
+        @media (max-width: 767px) {
+            .input-area input[type="text"] {
+                padding: 8px 12px;
+                font-size: 15px;
+                border-radius: 16px;
+            }
+        }
+
+        .input-area input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
         }
 
         .input-area button, .input-area label {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
+            padding: 9px 14px;
+            border-radius: 18px;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 17px;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 40px;
+            flex-shrink: 0;
         }
 
-        .input-area input[type="file"] {
-            display: none;
+        @media (max-width: 767px) {
+            .input-area button, .input-area label {
+                min-width: 36px;
+                height: 36px;
+                padding: 7px 12px;
+                font-size: 16px;
+                border-radius: 16px;
+            }
+        }
+
+        .input-area button:active, .input-area label:active {
+            transform: scale(0.95);
         }
 
         .modal {
@@ -258,6 +507,8 @@
             background: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
+            z-index: 1000;
+            padding: 20px;
         }
 
         .modal.active {
@@ -268,35 +519,53 @@
             background: white;
             padding: 30px;
             border-radius: 20px;
-            width: 90%;
+            width: 100%;
             max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .modal-content label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #666;
         }
 
         .modal-content input {
             width: 100%;
             padding: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
+            font-size: 14px;
         }
 
         .modal-buttons {
             display: flex;
             gap: 10px;
+            margin-top: 20px;
         }
 
         .btn-save {
+            flex: 1;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 12px 24px;
+            padding: 12px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
         }
 
         .btn-cancel {
+            flex: 1;
             background: #e0e0e0;
-            padding: 12px 24px;
+            padding: 12px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -310,7 +579,7 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .hidden {
@@ -321,6 +590,72 @@
             text-align: center;
             padding: 20px;
             color: #666;
+            font-size: 14px;
+        }
+
+        .messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .messages::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .messages::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 3px;
+        }
+
+        .messages::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        @media (max-width: 767px) {
+
+    html {
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    body {
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+        position: relative;
+    }
+
+    .container {
+        width: 100vw;
+        max-width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat-container {
+        flex: 1;
+        overflow: hidden;
+        height: calc(100vh - 140px); /* header + input */
+    }
+
+    .messages {
+        flex: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .input-area {
+        position: sticky;
+        bottom: 0;
+        z-index: 1000;
+        background: #ffffff;
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+}
+
+
         }
     </style>
 </head>
@@ -329,9 +664,9 @@
         <div id="loginScreen" class="login-screen">
             <div class="login-box">
                 <h2>🔐 Login Chat Guru</h2>
-                <input type="text" id="loginUsername" placeholder="Username" />
+                <input type="text" id="loginUsername" placeholder="Username" autocomplete="off" />
                 <input type="password" id="loginPassword" placeholder="Password: 56789" />
-                <button onclick="login()">Masuk</button>
+                <button id="loginBtn">Masuk</button>
                 <p class="error-msg" id="loginError"></p>
             </div>
         </div>
@@ -341,33 +676,38 @@
                 <div class="header-left">
                     <div class="logo" id="headerLogo">💬</div>
                     <div class="header-info">
-                        <h3 id="headerTitle">Chat Guru</h3>
-                        <p id="headerSubtitle">Ruang diskusi guru</p>
+                        <h3 id="headerTitle">Chat Guru SMPN 6 SAMPANG</h3>
+                        <p id="headerSubtitle">Ruang Diskusi Guru</p>
                     </div>
                 </div>
                 <div class="header-right">
+                    <div class="online-users" id="onlineUsers">👥 0 online</div>
                     <div class="user-badge" id="currentUserBadge"></div>
-                    <button class="settings-btn" onclick="openSettings()">⚙️</button>
+                    <button class="settings-btn" id="settingsBtn">⚙️</button>
                 </div>
             </div>
 
             <div class="chat-container">
                 <div class="messages" id="messages">
-                    <div class="loading">Belum ada pesan. Mulai percakapan!</div>
+                    <div class="loading">Memuat pesan...</div>
                 </div>
+                </div>
+                <div class="typing-indicator" id="typingIndicator"></div>
                 
                 <div class="input-area">
-                    <label for="imageInput">🖼️</label>
-                    <input type="file" id="imageInput" accept="image/*" onchange="sendMedia('image')" />
+                    <div class="attachment-btn">
+                        <label for="imageInput" title="Kirim Gambar">🖼️</label>
+                        <input type="file" id="imageInput" accept="image/*" />
+                        
+                        <label for="videoInput" title="Kirim Video">🎥</label>
+                        <input type="file" id="videoInput" accept="video/*" />
+                        
+                        <label for="fileInput" title="Kirim File">📎</label>
+                        <input type="file" id="fileInput" />
+                    </div>
                     
-                    <label for="videoInput">🎥</label>
-                    <input type="file" id="videoInput" accept="video/*" onchange="sendMedia('video')" />
-                    
-                    <label for="fileInput">📎</label>
-                    <input type="file" id="fileInput" onchange="sendMedia('file')" />
-                    
-                    <input type="text" id="messageInput" placeholder="Ketik pesan..." onkeypress="handleKeyPress(event)" />
-                    <button onclick="sendMessage()">📤</button>
+                    <input type="text" id="messageInput" placeholder="Ketik pesan..." />
+                    <button id="sendBtn">📤</button>
                 </div>
             </div>
         </div>
@@ -375,25 +715,25 @@
         <div id="settingsModal" class="modal">
             <div class="modal-content">
                 <h2>⚙️ Pengaturan</h2>
-                <label>Logo</label>
+                <label>Logo (Emoji)</label>
                 <input type="text" id="settingsLogo" placeholder="💬" maxlength="2" />
-                <label>Judul</label>
+                <label>Judul Aplikasi</label>
                 <input type="text" id="settingsTitle" placeholder="Chat Guru" />
                 <label>Subtitle</label>
                 <input type="text" id="settingsSubtitle" placeholder="Ruang diskusi guru" />
                 <div class="modal-buttons">
-                    <button class="btn-cancel" onclick="closeSettings()">Batal</button>
-                    <button class="btn-save" onclick="saveSettings()">Simpan</button>
+                    <button class="btn-cancel" id="cancelBtn">Batal</button>
+                    <button class="btn-save" id="saveBtn">Simpan</button>
                 </div>
-                <button class="logout-btn" onclick="logout()">Logout</button>
+                <button class="logout-btn" id="logoutBtn">Logout</button>
             </div>
         </div>
     </div>
 
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-        import { getDatabase, ref, push, onValue, set, remove, onDisconnect } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
+    <script>
         const firebaseConfig = {
             apiKey: "AIzaSyCMJQWjGpv3Z96OESeN7ulzdjNyHpes7Vg",
             authDomain: "chat-smpn-6-sampang.firebaseapp.com",
@@ -404,15 +744,27 @@
             appId: "1:409969666942:web:cb7ad799b6d8997f64a12f"
         };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        const messagesRef = ref(db, 'messages');
-        const onlineRef = ref(db, 'online');
-        const settingsRef = ref(db, 'settings');
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const messagesRef = db.ref('messages');
+        const onlineRef = db.ref('online');
+        const typingRef = db.ref('typing');
+        const settingsRef = db.ref('settings');
 
         let currentUser = null;
+        let typingTimeout = null;
+        let appReady = false; // PATCH STEP 1
 
-        window.login = function() {
+        function getInitials(name) {
+            if (!name) return '??';
+            const parts = name.split(/[\s_-]+/);
+            if (parts.length >= 2) {
+                return (parts[0][0] + parts[1][0]).toUpperCase();
+            }
+            return name.substring(0, 2).toUpperCase();
+        }
+
+        function userLogin() {
             const username = document.getElementById('loginUsername').value.trim();
             const password = document.getElementById('loginPassword').value;
             const errorEl = document.getElementById('loginError');
@@ -428,68 +780,136 @@
             }
 
             currentUser = username;
+            localStorage.setItem('chatUsername', username);
             document.getElementById('currentUserBadge').textContent = getInitials(username);
             document.getElementById('loginScreen').classList.add('hidden');
             document.getElementById('chatScreen').classList.remove('hidden');
             
-            initApp();
-            setUserOnline();
-        };
+            initializeApp();
+            setOnline();
+            errorEl.textContent = '';
+        }
 
-        function initApp() {
-            onValue(messagesRef, (snapshot) => {
+        function setOnline() {
+            const userRef = onlineRef.child(currentUser);
+            userRef.set({
+                username: currentUser,
+                timestamp: Date.now()
+            });
+            userRef.onDisconnect().remove();
+        }
+
+        function initializeApp() {
+            loadAppSettings();
+            
+            messagesRef.on('value', (snapshot) => {
                 const messages = [];
                 snapshot.forEach((child) => {
                     messages.push(child.val());
                 });
-                renderMessages(messages);
+                messages.sort((a, b) => a.timestamp - b.timestamp);
+                displayMessages(messages);
             });
 
-            onValue(settingsRef, (snapshot) => {
+            onlineRef.on('value', updateOnlineCount);
+            typingRef.on('value', updateTypingStatus);
+            settingsRef.on('value', (snapshot) => {
                 const settings = snapshot.val();
-                if (settings) applySettings(settings);
+                if (settings) applyAppSettings(settings);
+            });
+
+            appReady = true; // PATCH STEP 2
+        }
+
+        function updateOnlineCount() {
+            onlineRef.once('value', (snapshot) => {
+                document.getElementById('onlineUsers').textContent = `👥 ${snapshot.numChildren()} online`;
             });
         }
 
-        function getInitials(name) {
-            if (!name) return '??';
-            const parts = name.split(/[\s_-]+/);
-            if (parts.length >= 2) {
-                return (parts[0][0] + parts[1][0]).toUpperCase();
+        function sendTextMessage() {
+    // PATCH STEP 3: cegah aksi sebelum aplikasi siap
+    if (!appReady) return;
+
+    const input = document.getElementById('messageInput');
+    const text = input.value.trim();
+
+    // PATCH STEP 3: jangan silent fail jika user belum siap
+    if (!currentUser) {
+        alert('Silakan login terlebih dahulu');
+        return;
+    }
+
+    if (!text) return;
+
+    messagesRef.push({
+        type: 'text',
+        content: text,
+        sender: currentUser,
+        timestamp: Date.now(),
+        time: new Date().toLocaleTimeString('id-ID', {
+            hour: '2-digit',
+            minute: '2-digit'
+        })
+    });
+
+    input.value = '';
+    clearUserTyping();
+}
+
+
+        function onKeyPress(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                sendTextMessage();
             }
-            return name.substring(0, 2).toUpperCase();
         }
 
-        function setUserOnline() {
-            const userRef = ref(db, `online/${currentUser}`);
-            set(userRef, {
-                username: currentUser,
-                timestamp: Date.now()
-            });
-            onDisconnect(userRef).remove();
+        function onTypingInput() {
+    // PATCH STEP 4: pastikan aplikasi sudah siap
+    if (!appReady) return;
+
+    // PATCH STEP 4: jangan kirim typing jika user belum siap
+    if (!currentUser) return;
+
+    typingRef.child(currentUser).set({
+        username: currentUser,
+        timestamp: Date.now()
+    });
+
+    if (typingTimeout) {
+        clearTimeout(typingTimeout);
+    }
+
+    typingTimeout = setTimeout(() => {
+        clearUserTyping();
+    }, 3000);
+}
+
+        function clearUserTyping() {
+            if (currentUser) {
+                typingRef.child(currentUser).remove();
+            }
         }
 
-        window.sendMessage = function() {
-            const input = document.getElementById('messageInput');
-            const text = input.value.trim();
-            if (!text || !currentUser) return;
-
-            push(messagesRef, {
-                type: 'text',
-                content: text,
-                sender: currentUser,
-                timestamp: Date.now(),
-                time: new Date().toLocaleTimeString('id-ID', {hour: '2-digit', minute: '2-digit'})
+        function updateTypingStatus() {
+            typingRef.once('value', (snapshot) => {
+                const typingUsers = [];
+                const now = Date.now();
+                
+                snapshot.forEach((child) => {
+                    const data = child.val();
+                    if (data.username !== currentUser && now - data.timestamp < 5000) {
+                        typingUsers.push(data.username);
+                    }
+                });
+                
+                const indicator = document.getElementById('typingIndicator');
+                indicator.textContent = typingUsers.length > 0 ? `${typingUsers.join(', ')} sedang mengetik...` : '';
             });
+        }
 
-            input.value = '';
-        };
-
-        window.handleKeyPress = function(event) {
-            if (event.key === 'Enter') sendMessage();
-        };
-
-        window.sendMedia = function(type) {
+        function sendMediaFile(type) {
             const input = document.getElementById(type + 'Input');
             const file = input.files[0];
             if (!file || !currentUser) return;
@@ -503,7 +923,7 @@
 
             const reader = new FileReader();
             reader.onload = function(e) {
-                push(messagesRef, {
+                messagesRef.push({
                     type: type,
                     content: e.target.result,
                     fileName: file.name,
@@ -514,14 +934,16 @@
             };
             reader.readAsDataURL(file);
             input.value = '';
-        };
+        }
 
-        function renderMessages(messages) {
+        function displayMessages(messages) {
             const container = document.getElementById('messages');
+            const wasScrolledToBottom = container.scrollHeight - container.scrollTop <= container.clientHeight + 100;
+            
             container.innerHTML = '';
 
             if (messages.length === 0) {
-                container.innerHTML = '<div class="loading">Belum ada pesan</div>';
+                container.innerHTML = '<div class="loading">Belum ada pesan. Mulai percakapan!</div>';
                 return;
             }
 
@@ -552,17 +974,17 @@
                     const img = document.createElement('img');
                     img.src = msg.content;
                     img.className = 'message-media';
-                    img.style.maxWidth = '300px';
+                    img.style.maxWidth = '250px';
                     bubble.appendChild(img);
                 } else if (msg.type === 'video') {
                     const video = document.createElement('video');
                     video.src = msg.content;
                     video.className = 'message-media';
                     video.controls = true;
-                    video.style.maxWidth = '300px';
+                    video.style.maxWidth = '250px';
                     bubble.appendChild(video);
                 } else if (msg.type === 'file') {
-                    bubble.innerHTML = `📄 ${msg.fileName} <a href="${msg.content}" download>Download</a>`;
+                    bubble.innerHTML = `📄 ${msg.fileName}<br><a href="${msg.content}" download style="color: inherit; text-decoration: underline; font-size: 12px;">Download</a>`;
                 }
 
                 const time = document.createElement('div');
@@ -576,49 +998,92 @@
                 container.appendChild(div);
             });
 
-            container.scrollTop = container.scrollHeight;
+            if (wasScrolledToBottom) {
+                container.scrollTop = container.scrollHeight;
+            }
         }
 
-        window.openSettings = function() {
+        function loadAppSettings() {
+            settingsRef.once('value', (snapshot) => {
+                const settings = snapshot.val();
+                if (settings) applyAppSettings(settings);
+            });
+        }
+
+        function showSettings() {
             document.getElementById('settingsLogo').value = document.getElementById('headerLogo').textContent;
             document.getElementById('settingsTitle').value = document.getElementById('headerTitle').textContent;
             document.getElementById('settingsSubtitle').value = document.getElementById('headerSubtitle').textContent;
             document.getElementById('settingsModal').classList.add('active');
-        };
+        }
 
-        window.closeSettings = function() {
+        function hideSettings() {
             document.getElementById('settingsModal').classList.remove('active');
-        };
+        }
 
-        window.saveSettings = function() {
+        function saveAppSettings() {
             const settings = {
                 logo: document.getElementById('settingsLogo').value || '💬',
                 title: document.getElementById('settingsTitle').value || 'Chat Guru',
                 subtitle: document.getElementById('settingsSubtitle').value || 'Ruang diskusi guru'
             };
-            set(settingsRef, settings);
-            applySettings(settings);
-            closeSettings();
-        };
+            settingsRef.set(settings);
+            applyAppSettings(settings);
+            hideSettings();
+        }
 
-        function applySettings(settings) {
+        function applyAppSettings(settings) {
             document.getElementById('headerLogo').textContent = settings.logo;
             document.getElementById('headerTitle').textContent = settings.title;
             document.getElementById('headerSubtitle').textContent = settings.subtitle;
         }
 
-        window.logout = function() {
+        function userLogout() {
             if (currentUser) {
-                remove(ref(db, `online/${currentUser}`));
+                onlineRef.child(currentUser).remove();
+                typingRef.child(currentUser).remove();
             }
+            localStorage.removeItem('chatUsername');
             currentUser = null;
             document.getElementById('chatScreen').classList.add('hidden');
             document.getElementById('loginScreen').classList.remove('hidden');
-            closeSettings();
-        };
+            document.getElementById('loginUsername').value = '';
+            document.getElementById('loginPassword').value = '';
+            hideSettings();
+        }
 
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('loginBtn').addEventListener('click', userLogin);
+            document.getElementById('sendBtn').addEventListener('click', sendTextMessage);
+            document.getElementById('messageInput').addEventListener('keypress', onKeyPress);
+            document.getElementById('messageInput').addEventListener('input', onTypingInput);
+            document.getElementById('settingsBtn').addEventListener('click', showSettings);
+            document.getElementById('cancelBtn').addEventListener('click', hideSettings);
+            document.getElementById('saveBtn').addEventListener('click', saveAppSettings);
+            document.getElementById('logoutBtn').addEventListener('click', userLogout);
+            document.getElementById('imageInput').addEventListener('change', () => sendMediaFile('image'));
+            document.getElementById('videoInput').addEventListener('change', () => sendMediaFile('video'));
+            document.getElementById('fileInput').addEventListener('change', () => sendMediaFile('file'));
+
+            // Auto-login check
+            const savedUser = localStorage.getItem('chatUsername');
+            if (savedUser) {
+                currentUser = savedUser;
+                document.getElementById('currentUserBadge').textContent = getInitials(savedUser);
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('chatScreen').classList.remove('hidden');
+                initializeApp();
+                setOnline();
+            }
+        });
+
+        // Cleanup on page close
         window.addEventListener('beforeunload', () => {
-            if (currentUser) remove(ref(db, `online/${currentUser}`));
+            if (currentUser) {
+                onlineRef.child(currentUser).remove();
+                typingRef.child(currentUser).remove();
+            }
         });
     </script>
 </body>
