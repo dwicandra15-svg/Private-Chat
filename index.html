@@ -22,6 +22,7 @@
             padding: 0;
             margin: 0;
             overflow: hidden;
+            overscroll-behavior: none; /* PATCH 1 */
         }
 
         .container {
@@ -620,6 +621,7 @@
 
     body {
         overflow: hidden;
+        overscroll-behavior: none; /* PATCH 1 */
         height: 100vh;
         width: 100vw;
         position: relative;
@@ -634,16 +636,19 @@
     }
 
     .chat-container {
-        flex: 1;
-        overflow: hidden;
-        height: calc(100vh - 140px); /* header + input */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;   /* WAJIB */
+    overflow: hidden;
     }
 
     .messages {
-        flex: 1;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 
     .input-area {
         position: sticky;
