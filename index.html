@@ -635,17 +635,18 @@
         flex-direction: column;
     }
 
-    .chat-container {
+   .chat-container {
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: 0;   /* WAJIB */
-    overflow: hidden;
-    }
+    min-height: 0;           /* WAJIB */
+    overflow: visible;       /* WAJIB */
+}
 
-    .messages {
+   .messages {
     flex: 1;
-    overflow-y: auto;
+    overflow-y: auto;              /* ✅ SCROLL AKTIF */
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
 }
 
